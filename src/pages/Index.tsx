@@ -219,6 +219,7 @@ const Index = () => {
       </section>
 
       <section id="услуги" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-transparent to-transparent h-32 z-10"></div>
         <div className="absolute inset-0 opacity-10">
           <img
             src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
@@ -226,6 +227,7 @@ const Index = () => {
             className="w-full h-full object-cover"
           />
         </div>
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0D1235] via-[#0D1235]/50 to-transparent h-32 z-10"></div>
         <div className="container mx-auto relative z-10" ref={servicesRef}>
           <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Наши <span className="text-[#00D9FF] neon-glow">услуги</span>
@@ -250,8 +252,9 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="прайс" className="py-20 px-4">
-        <div className="container mx-auto max-w-3xl" ref={pricingRef}>
+      <section id="прайс" className="py-20 px-4 relative">
+        <div className="absolute top-0 inset-x-0 bg-gradient-to-b from-[#0D1235] via-transparent to-transparent h-32 z-0"></div>
+        <div className="container mx-auto max-w-3xl relative z-10" ref={pricingRef}>
           <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${pricingInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="text-[#00D9FF] neon-glow">Прайс</span>-лист
           </h2>
@@ -277,6 +280,7 @@ const Index = () => {
       </section>
 
       <section id="преимущества" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-transparent to-transparent h-32 z-10"></div>
         <div className="absolute inset-0 opacity-10">
           <img
             src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/9328c180-d42a-4922-8e36-e07807914200.jpg"
@@ -284,6 +288,7 @@ const Index = () => {
             className="w-full h-full object-cover"
           />
         </div>
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0D1235] via-[#0D1235]/50 to-transparent h-32 z-10"></div>
         <div className="container mx-auto relative z-10" ref={advantagesRef}>
           <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${advantagesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Почему <span className="text-[#00D9FF] neon-glow">выбирают нас</span>
@@ -306,8 +311,9 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="faq" className="py-20 px-4">
-        <div className="container mx-auto max-w-3xl" ref={faqRef}>
+      <section id="faq" className="py-20 px-4 relative">
+        <div className="absolute top-0 inset-x-0 bg-gradient-to-b from-[#0D1235] via-transparent to-transparent h-32 z-0"></div>
+        <div className="container mx-auto max-w-3xl relative z-10" ref={faqRef}>
           <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${faqInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Вопросы и <span className="text-[#00D9FF] neon-glow">ответы</span>
           </h2>
@@ -332,6 +338,7 @@ const Index = () => {
       </section>
 
       <section id="контакты" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-transparent to-transparent h-32 z-10"></div>
         <div className="absolute inset-0 opacity-5">
           <img
             src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
