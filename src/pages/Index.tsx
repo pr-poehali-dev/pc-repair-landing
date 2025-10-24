@@ -192,20 +192,36 @@ const Index = () => {
                 </Button>
               </div>
             </div>
-            <div className="relative animate-scale-in">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF] to-[#00D927] rounded-lg blur-3xl opacity-30"></div>
-              <img
-                src="https://cdn.poehali.dev/files/d2de3749-3cd0-4301-a4b7-4ae8a082c487.jpg"
-                alt="Компьютерный мастер"
-                className="relative rounded-lg w-full"
-              />
+            <div className="relative animate-scale-in hidden md:block">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF] to-[#00D927] rounded-lg blur-3xl opacity-20"></div>
+              <div className="relative rounded-lg bg-gradient-to-br from-[#00D9FF]/10 to-[#00D927]/10 border border-[#00D9FF]/30 p-12 backdrop-blur-sm">
+                <div className="flex flex-col items-center justify-center space-y-6 text-center">
+                  <Icon name="Cpu" size={120} className="text-[#00D9FF] opacity-80" />
+                  <div className="space-y-2">
+                    <p className="text-3xl font-bold text-[#00D9FF]">Профессиональный</p>
+                    <p className="text-2xl text-gray-300">ремонт и обслуживание</p>
+                  </div>
+                  <div className="flex gap-8 mt-4">
+                    <Icon name="Laptop" size={48} className="text-[#00D927]" />
+                    <Icon name="Monitor" size={48} className="text-[#00D9FF]" />
+                    <Icon name="HardDrive" size={48} className="text-[#00D927]" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="услуги" className="py-20 px-4 bg-[#0D1235]">
-        <div className="container mx-auto">
+      <section id="услуги" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             Наши <span className="text-[#00D9FF] neon-glow">услуги</span>
           </h2>
@@ -253,8 +269,15 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="преимущества" className="py-20 px-4 bg-[#0D1235]">
-        <div className="container mx-auto">
+      <section id="преимущества" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img
+            src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/9328c180-d42a-4922-8e36-e07807914200.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             Почему <span className="text-[#00D9FF] neon-glow">выбирают нас</span>
           </h2>
@@ -299,8 +322,15 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="контакты" className="py-20 px-4 bg-[#0D1235]">
-        <div className="container mx-auto max-w-4xl">
+      <section id="контакты" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <img
+            src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container mx-auto max-w-4xl relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             Свяжитесь со <span className="text-[#00D9FF] neon-glow">мной</span>
           </h2>
