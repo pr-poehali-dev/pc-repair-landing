@@ -179,7 +179,7 @@ const Index = () => {
                 Компьютерный <br />
                 <span className="text-[#00D9FF] neon-glow">мастер</span>
               </h1>
-              <div className="inline-block bg-[#00D927] text-[#0A0E27] px-6 py-3 rounded-full font-bold text-xl neon-border border-2 border-[#00D927]">
+              <div className="inline-block bg-white text-[#0A0E27] px-6 py-3 rounded-full font-bold text-xl border-2 border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                 Диагностика бесплатно
               </div>
               <p className="text-xl text-gray-300">
@@ -196,7 +196,7 @@ const Index = () => {
                 </Button>
                 <Button
                   onClick={() => scrollToSection('услуги')}
-                  className="bg-transparent hover:bg-[#00D927] text-[#00D927] hover:text-[#0A0E27] border-2 border-[#00D927] font-bold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
+                  className="bg-transparent hover:bg-white text-white hover:text-[#0A0E27] border-2 border-white font-bold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
                 >
                   Услуги
                 </Button>
@@ -269,13 +269,13 @@ const Index = () => {
                 key={index}
                 className={`p-6 flex justify-between items-center transition-all duration-500 ${pricingInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} ${
                   item.highlight
-                    ? 'bg-gradient-to-r from-[#00D927]/20 to-[#00D9FF]/20 border-[#00D927] border-2 neon-border'
+                    ? 'bg-gradient-to-r from-white/20 to-[#00D9FF]/20 border-white border-2 shadow-[0_0_20px_rgba(255,255,255,0.3)]'
                     : 'bg-[#0D1235] border-[#00D9FF]/20'
                 }`}
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
                 <span className="text-lg font-semibold">{item.service}</span>
-                <span className={`text-2xl font-bold ${item.highlight ? 'text-[#00D927] neon-glow' : 'text-[#00D9FF]'}`}>
+                <span className={`text-2xl font-bold ${item.highlight ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]' : 'text-[#00D9FF]'}`}>
                   {item.price}
                 </span>
               </Card>
@@ -394,7 +394,7 @@ const Index = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-transparent hover:bg-[#00D927] text-[#00D927] hover:text-[#0A0E27] border-2 border-[#00D927] font-bold py-6 text-lg rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
+                  className="w-full bg-transparent hover:bg-white text-white hover:text-[#0A0E27] border-2 border-white font-bold py-6 text-lg rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
                 >
                   {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
                 </Button>
@@ -408,7 +408,7 @@ const Index = () => {
                   <p className="text-2xl font-bold text-[#00D9FF] mb-2">Алексей</p>
                   <a
                     href="tel:89940931512"
-                    className="text-3xl md:text-4xl font-bold text-[#00D927] neon-glow hover:text-[#00D927]/80 transition-colors"
+                    className="text-3xl md:text-4xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] hover:text-white/80 transition-colors"
                   >
                     8 994 093 15 12
                   </a>
