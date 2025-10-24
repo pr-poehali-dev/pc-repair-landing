@@ -2,10 +2,16 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
+  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const services = [
     { icon: 'Wrench', title: 'Ремонт ПК', description: 'Диагностика и устранение любых неисправностей' },
@@ -58,6 +64,34 @@ const Index = () => {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Заявка отправлена!",
+        description: "Алексей свяжется с вами в ближайшее время.",
+      });
+
+      setFormData({ name: '', phone: '', message: '' });
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позвонить.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -225,40 +259,91 @@ const Index = () => {
       </section>
 
       <section id="контакты" className="py-20 px-4 bg-[#0D1235]">
-        <div className="container mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
             Свяжитесь со <span className="text-[#00D9FF] neon-glow">мной</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-8">Работаю по всему Улан-Удэ</p>
           
-          <Card className="bg-[#0A0E27] border-[#00D9FF]/20 p-8 space-y-6">
-            <div>
-              <p className="text-2xl font-bold text-[#00D9FF] mb-2">Алексей</p>
-              <a
-                href="tel:89940931512"
-                className="text-4xl font-bold text-[#00D927] neon-glow hover:text-[#00D927]/80 transition-colors"
-              >
-                8 994 093 15 12
-              </a>
-            </div>
-            
-            <div className="flex justify-center gap-4">
-              <Button
-                className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-bold px-8 py-6 text-lg rounded-full neon-border border-2 border-[#00D9FF]"
-                onClick={() => window.open('https://t.me/89940931512', '_blank')}
-              >
-                <Icon name="Send" className="mr-2" />
-                Telegram
-              </Button>
-              <Button
-                className="bg-[#00D927] hover:bg-[#00D927]/80 text-[#0A0E27] font-bold px-8 py-6 text-lg rounded-full neon-border border-2 border-[#00D927]"
-                onClick={() => window.open('https://wa.me/89940931512', '_blank')}
-              >
-                <Icon name="MessageCircle" className="mr-2" />
-                WhatsApp
-              </Button>
-            </div>
-          </Card>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-[#0A0E27] border-[#00D9FF]/20 p-8">
+              <h3 className="text-2xl font-bold text-[#00D9FF] mb-6">Оставить заявку</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <Input
+                    name="name"
+                    placeholder="Ваше имя"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="bg-[#0D1235] border-[#00D9FF]/20 text-white placeholder:text-gray-500 focus:border-[#00D9FF]"
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="phone"
+                    type="tel"
+                    placeholder="Телефон"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                    className="bg-[#0D1235] border-[#00D9FF]/20 text-white placeholder:text-gray-500 focus:border-[#00D9FF]"
+                  />
+                </div>
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder="Опишите проблему"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="bg-[#0D1235] border-[#00D9FF]/20 text-white placeholder:text-gray-500 focus:border-[#00D9FF]"
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#00D927] hover:bg-[#00D927]/80 text-[#0A0E27] font-bold py-6 text-lg rounded-full neon-border border-2 border-[#00D927]"
+                >
+                  {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+                </Button>
+              </form>
+            </Card>
+
+            <Card className="bg-[#0A0E27] border-[#00D9FF]/20 p-8 flex flex-col justify-center">
+              <div className="text-center space-y-6">
+                <div>
+                  <p className="text-xl text-gray-300 mb-2">Или позвоните напрямую</p>
+                  <p className="text-2xl font-bold text-[#00D9FF] mb-2">Алексей</p>
+                  <a
+                    href="tel:89940931512"
+                    className="text-3xl md:text-4xl font-bold text-[#00D927] neon-glow hover:text-[#00D927]/80 transition-colors"
+                  >
+                    8 994 093 15 12
+                  </a>
+                </div>
+                
+                <div className="pt-6">
+                  <p className="text-gray-400 mb-4">Работаю по всему Улан-Удэ</p>
+                  <div className="flex justify-center gap-4">
+                    <Button
+                      className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-bold px-6 py-5 rounded-full neon-border border-2 border-[#00D9FF]"
+                      onClick={() => window.open('https://t.me/89940931512', '_blank')}
+                    >
+                      <Icon name="Send" className="mr-2" />
+                      Telegram
+                    </Button>
+                    <Button
+                      className="bg-[#00D927] hover:bg-[#00D927]/80 text-[#0A0E27] font-bold px-6 py-5 rounded-full neon-border border-2 border-[#00D927]"
+                      onClick={() => window.open('https://wa.me/89940931512', '_blank')}
+                    >
+                      <Icon name="MessageCircle" className="mr-2" />
+                      WhatsApp
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
