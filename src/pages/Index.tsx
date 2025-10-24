@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { useInView } from 'react-intersection-observer';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
@@ -13,6 +14,11 @@ const Index = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
+
+  const { ref: servicesRef, inView: servicesInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: pricingRef, inView: pricingInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: advantagesRef, inView: advantagesInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: faqRef, inView: faqInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const services = [
     { icon: 'Wrench', title: 'Ремонт ПК', description: 'Диагностика и устранение любых неисправностей' },
@@ -116,7 +122,7 @@ const Index = () => {
           <div className="flex items-center gap-4">
             <Button
               onClick={() => scrollToSection('контакты')}
-              className="hidden sm:flex bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-semibold neon-border border-2 border-[#00D9FF]"
+              className="hidden sm:flex bg-transparent hover:bg-[#00D9FF] text-[#00D9FF] hover:text-[#0A0E27] font-semibold border-2 border-[#00D9FF] transition-all duration-300"
             >
               Позвонить
             </Button>
@@ -178,15 +184,14 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   onClick={() => scrollToSection('контакты')}
-                  className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-bold text-lg px-8 py-6 rounded-full neon-border border-2 border-[#00D9FF]"
+                  className="bg-transparent hover:bg-[#00D9FF] text-[#00D9FF] hover:text-[#0A0E27] border-2 border-[#00D9FF] font-bold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)]"
                 >
                   <Icon name="Phone" className="mr-2" />
                   Вызвать мастера
                 </Button>
                 <Button
                   onClick={() => scrollToSection('услуги')}
-                  variant="outline"
-                  className="border-2 border-[#00D9FF] text-[#00D9FF] hover:bg-[#00D9FF]/10 font-bold text-lg px-8 py-6 rounded-full"
+                  className="bg-transparent hover:bg-[#00D927] text-[#00D927] hover:text-[#0A0E27] border-2 border-[#00D927] font-bold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
                 >
                   Услуги
                 </Button>
@@ -221,15 +226,16 @@ const Index = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="container mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        <div className="container mx-auto relative z-10" ref={servicesRef}>
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Наши <span className="text-[#00D9FF] neon-glow">услуги</span>
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="bg-[#0A0E27] border-[#00D9FF]/20 p-6 hover:border-[#00D9FF] transition-all cursor-pointer group"
+                className={`bg-[#0A0E27] border-[#00D9FF]/20 p-6 hover:border-[#00D9FF] transition-all cursor-pointer group duration-500 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setActiveService(index)}
                 onMouseLeave={() => setActiveService(null)}
               >
@@ -245,19 +251,20 @@ const Index = () => {
       </section>
 
       <section id="прайс" className="py-20 px-4">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        <div className="container mx-auto max-w-3xl" ref={pricingRef}>
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${pricingInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <span className="text-[#00D9FF] neon-glow">Прайс</span>-лист
           </h2>
           <div className="space-y-4">
             {pricing.map((item, index) => (
               <Card
                 key={index}
-                className={`p-6 flex justify-between items-center ${
+                className={`p-6 flex justify-between items-center transition-all duration-500 ${pricingInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'} ${
                   item.highlight
                     ? 'bg-gradient-to-r from-[#00D927]/20 to-[#00D9FF]/20 border-[#00D927] border-2 neon-border'
                     : 'bg-[#0D1235] border-[#00D9FF]/20'
                 }`}
+                style={{ transitionDelay: `${index * 80}ms` }}
               >
                 <span className="text-lg font-semibold">{item.service}</span>
                 <span className={`text-2xl font-bold ${item.highlight ? 'text-[#00D927] neon-glow' : 'text-[#00D9FF]'}`}>
@@ -277,15 +284,16 @@ const Index = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="container mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        <div className="container mx-auto relative z-10" ref={advantagesRef}>
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${advantagesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Почему <span className="text-[#00D9FF] neon-glow">выбирают нас</span>
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {advantages.map((item, index) => (
               <Card
                 key={index}
-                className="bg-[#0A0E27] border-[#00D9FF]/20 p-6 text-center hover:border-[#00D9FF] transition-all hover-scale"
+                className={`bg-[#0A0E27] border-[#00D9FF]/20 p-6 text-center hover:border-[#00D9FF] transition-all hover-scale duration-500 ${advantagesInView ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="w-20 h-20 rounded-full bg-[#00D9FF]/10 flex items-center justify-center mx-auto mb-4 neon-border border-2 border-[#00D9FF]">
                   <Icon name={item.icon} size={40} className="text-[#00D9FF]" />
@@ -299,8 +307,8 @@ const Index = () => {
       </section>
 
       <section id="faq" className="py-20 px-4">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
+        <div className="container mx-auto max-w-3xl" ref={faqRef}>
+          <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${faqInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Вопросы и <span className="text-[#00D9FF] neon-glow">ответы</span>
           </h2>
           <Accordion type="single" collapsible className="space-y-4">
@@ -308,7 +316,8 @@ const Index = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-[#0D1235] border-[#00D9FF]/20 rounded-lg px-6"
+                className={`bg-[#0D1235] border-[#00D9FF]/20 rounded-lg px-6 transition-all duration-500 ${faqInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <AccordionTrigger className="text-lg font-semibold hover:text-[#00D9FF] hover:no-underline">
                   {faq.question}
@@ -373,7 +382,7 @@ const Index = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#00D927] hover:bg-[#00D927]/80 text-[#0A0E27] font-bold py-6 text-lg rounded-full neon-border border-2 border-[#00D927]"
+                  className="w-full bg-transparent hover:bg-[#00D927] text-[#00D927] hover:text-[#0A0E27] border-2 border-[#00D927] font-bold py-6 text-lg rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
                 >
                   {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
                 </Button>
@@ -397,14 +406,14 @@ const Index = () => {
                   <p className="text-gray-400 mb-4">Работаю по всему Улан-Удэ</p>
                   <div className="flex justify-center gap-4">
                     <Button
-                      className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-bold px-6 py-5 rounded-full neon-border border-2 border-[#00D9FF]"
+                      className="bg-transparent hover:bg-[#00D9FF] text-[#00D9FF] hover:text-[#0A0E27] border-2 border-[#00D9FF] font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)]"
                       onClick={() => window.open('https://t.me/89940931512', '_blank')}
                     >
                       <Icon name="Send" className="mr-2" />
                       Telegram
                     </Button>
                     <Button
-                      className="bg-[#00D927] hover:bg-[#00D927]/80 text-[#0A0E27] font-bold px-6 py-5 rounded-full neon-border border-2 border-[#00D927]"
+                      className="bg-transparent hover:bg-[#00D927] text-[#00D927] hover:text-[#0A0E27] border-2 border-[#00D927] font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
                       onClick={() => window.open('https://wa.me/89940931512', '_blank')}
                     >
                       <Icon name="MessageCircle" className="mr-2" />
