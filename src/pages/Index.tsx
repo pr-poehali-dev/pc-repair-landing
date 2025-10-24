@@ -11,6 +11,7 @@ const Index = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
   const services = [
@@ -98,7 +99,8 @@ const Index = () => {
     <div className="min-h-screen bg-[#0A0E27] text-white">
       <nav className="fixed top-0 w-full bg-[#0A0E27]/90 backdrop-blur-md z-50 border-b border-[#00D9FF]/20">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-[#00D9FF] neon-glow">КомпМастер</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-[#00D9FF] neon-glow">Компьютерный мастер</h1>
+          
           <div className="hidden md:flex gap-6">
             {['Главная', 'Услуги', 'Прайс', 'Преимущества', 'FAQ', 'Контакты'].map((item) => (
               <button
@@ -110,13 +112,52 @@ const Index = () => {
               </button>
             ))}
           </div>
-          <Button
-            onClick={() => scrollToSection('контакты')}
-            className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-semibold neon-border border-2 border-[#00D9FF]"
-          >
-            Позвонить
-          </Button>
+          
+          <div className="flex items-center gap-4">
+            <Button
+              onClick={() => scrollToSection('контакты')}
+              className="hidden sm:flex bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-semibold neon-border border-2 border-[#00D9FF]"
+            >
+              Позвонить
+            </Button>
+            
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-[#00D9FF] p-2"
+              aria-label="Меню"
+            >
+              <Icon name={isMobileMenuOpen ? 'X' : 'Menu'} size={28} />
+            </button>
+          </div>
         </div>
+        
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-[#0A0E27] border-t border-[#00D9FF]/20 animate-fade-in">
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              {['Главная', 'Услуги', 'Прайс', 'Преимущества', 'FAQ', 'Контакты'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => {
+                    scrollToSection(item.toLowerCase());
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-left py-2 hover:text-[#00D9FF] transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+              <Button
+                onClick={() => {
+                  scrollToSection('контакты');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-semibold neon-border border-2 border-[#00D9FF]"
+              >
+                Позвонить
+              </Button>
+            </div>
+          </div>
+        )}
       </nav>
 
       <section id="главная" className="pt-32 pb-20 px-4">
