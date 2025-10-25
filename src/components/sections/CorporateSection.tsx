@@ -17,6 +17,8 @@ const CorporateSection = ({ corporateRef, corporateInView, scrollToSection }: Co
           src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/9328c180-d42a-4922-8e36-e07807914200.jpg"
           alt=""
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-card via-card/50 to-transparent h-32 z-10"></div>

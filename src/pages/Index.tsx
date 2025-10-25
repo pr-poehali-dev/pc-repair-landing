@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { useInView } from 'react-intersection-observer';
 import Navigation from '@/components/sections/Navigation';
 import HeroSection from '@/components/sections/HeroSection';
-import ServicesSection from '@/components/sections/ServicesSection';
-import PricingSection from '@/components/sections/PricingSection';
-import AdvantagesSection from '@/components/sections/AdvantagesSection';
-import CorporateSection from '@/components/sections/CorporateSection';
-import FAQSection from '@/components/sections/FAQSection';
-import ContactSection from '@/components/sections/ContactSection';
+
+const ServicesSection = lazy(() => import('@/components/sections/ServicesSection'));
+const PricingSection = lazy(() => import('@/components/sections/PricingSection'));
+const AdvantagesSection = lazy(() => import('@/components/sections/AdvantagesSection'));
+const CorporateSection = lazy(() => import('@/components/sections/CorporateSection'));
+const FAQSection = lazy(() => import('@/components/sections/FAQSection'));
+const ContactSection = lazy(() => import('@/components/sections/ContactSection'));
 
 const Index = () => {
   const [activeService, setActiveService] = useState<number | null>(null);
@@ -17,11 +18,11 @@ const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toast } = useToast();
 
-  const { ref: servicesRef, inView: servicesInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { ref: pricingRef, inView: pricingInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { ref: advantagesRef, inView: advantagesInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { ref: corporateRef, inView: corporateInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-  const { ref: faqRef, inView: faqInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: servicesRef, inView: servicesInView } = useInView({ triggerOnce: true, threshold: 0.05, rootMargin: '50px' });
+  const { ref: pricingRef, inView: pricingInView } = useInView({ triggerOnce: true, threshold: 0.05, rootMargin: '50px' });
+  const { ref: advantagesRef, inView: advantagesInView } = useInView({ triggerOnce: true, threshold: 0.05, rootMargin: '50px' });
+  const { ref: corporateRef, inView: corporateInView } = useInView({ triggerOnce: true, threshold: 0.05, rootMargin: '50px' });
+  const { ref: faqRef, inView: faqInView } = useInView({ triggerOnce: true, threshold: 0.05, rootMargin: '50px' });
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -65,40 +66,52 @@ const Index = () => {
       
       <HeroSection scrollToSection={scrollToSection} />
       
-      <ServicesSection 
-        servicesRef={servicesRef}
-        servicesInView={servicesInView}
-        activeService={activeService}
-        setActiveService={setActiveService}
-      />
+      <Suspense fallback={<div className="h-screen" />}>
+        <ServicesSection 
+          servicesRef={servicesRef}
+          servicesInView={servicesInView}
+          activeService={activeService}
+          setActiveService={setActiveService}
+        />
+      </Suspense>
       
-      <PricingSection 
-        pricingRef={pricingRef}
-        pricingInView={pricingInView}
-      />
+      <Suspense fallback={<div className="h-96" />}>
+        <PricingSection 
+          pricingRef={pricingRef}
+          pricingInView={pricingInView}
+        />
+      </Suspense>
       
-      <AdvantagesSection 
-        advantagesRef={advantagesRef}
-        advantagesInView={advantagesInView}
-      />
+      <Suspense fallback={<div className="h-96" />}>
+        <AdvantagesSection 
+          advantagesRef={advantagesRef}
+          advantagesInView={advantagesInView}
+        />
+      </Suspense>
       
-      <CorporateSection 
-        corporateRef={corporateRef}
-        corporateInView={corporateInView}
-        scrollToSection={scrollToSection}
-      />
+      <Suspense fallback={<div className="h-96" />}>
+        <CorporateSection 
+          corporateRef={corporateRef}
+          corporateInView={corporateInView}
+          scrollToSection={scrollToSection}
+        />
+      </Suspense>
       
-      <FAQSection 
-        faqRef={faqRef}
-        faqInView={faqInView}
-      />
+      <Suspense fallback={<div className="h-96" />}>
+        <FAQSection 
+          faqRef={faqRef}
+          faqInView={faqInView}
+        />
+      </Suspense>
       
-      <ContactSection 
-        formData={formData}
-        isSubmitting={isSubmitting}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-      />
+      <Suspense fallback={<div className="h-96" />}>
+        <ContactSection 
+          formData={formData}
+          isSubmitting={isSubmitting}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+      </Suspense>
     </div>
   );
 };

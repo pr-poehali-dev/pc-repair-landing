@@ -20,6 +20,8 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
           src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
           alt=""
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="container mx-auto max-w-4xl relative z-10">
