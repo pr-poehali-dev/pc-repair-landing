@@ -97,7 +97,7 @@ const CorporateSection = ({ corporateRef, corporateInView, scrollToSection }: Co
             </div>
             <Button
               onClick={() => scrollToSection('контакты')}
-              className="bg-transparent hover:bg-primary text-primary hover:text-primary-foreground border-2 border-primary font-bold px-8 py-6 rounded-full transition-all duration-300 whitespace-nowrap"
+              className="bg-transparent hover:bg-primary text-primary hover:text-primary-foreground border-2 border-primary font-bold px-8 py-6 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)] whitespace-nowrap"
             >
               Обсудить условия
             </Button>
