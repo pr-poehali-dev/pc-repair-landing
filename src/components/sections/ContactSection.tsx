@@ -13,9 +13,9 @@ interface ContactSectionProps {
 
 const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmit }: ContactSectionProps) => {
   return (
-    <section id="контакты" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-transparent to-transparent h-32 z-10"></div>
-      <div className="absolute inset-0 opacity-5">
+    <section id="контакты" className="py-20 px-4 bg-card relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent h-32 z-10"></div>
+      <div className="absolute inset-0 opacity-5 dark:opacity-5 light:opacity-3">
         <img
           src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
           alt=""
@@ -24,12 +24,12 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
       </div>
       <div className="container mx-auto max-w-4xl relative z-10">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          Свяжитесь со <span className="text-[#00D9FF] neon-glow">мной</span>
+          Свяжитесь со <span className="text-primary neon-glow">мной</span>
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className="bg-[#0A0E27] border-[#00D9FF]/20 p-8">
-            <h3 className="text-2xl font-bold text-[#00D9FF] mb-6">Оставить заявку</h3>
+          <Card className="bg-background border-primary/20 p-8">
+            <h3 className="text-2xl font-bold text-primary mb-6">Оставить заявку</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <Input
@@ -38,7 +38,7 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="bg-[#0D1235] border-[#00D9FF]/20 text-white placeholder:text-gray-500 focus:border-[#00D9FF]"
+                  className="bg-card border-primary/20 placeholder:text-muted-foreground focus:border-primary"
                 />
               </div>
               <div>
@@ -49,7 +49,7 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
-                  className="bg-[#0D1235] border-[#00D9FF]/20 text-white placeholder:text-gray-500 focus:border-[#00D9FF]"
+                  className="bg-card border-primary/20 placeholder:text-muted-foreground focus:border-primary"
                 />
               </div>
               <div>
@@ -59,44 +59,44 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="bg-[#0D1235] border-[#00D9FF]/20 text-white placeholder:text-gray-500 focus:border-[#00D9FF]"
+                  className="bg-card border-primary/20 placeholder:text-muted-foreground focus:border-primary"
                 />
               </div>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-transparent hover:bg-white text-white hover:text-[#0A0E27] border-2 border-white font-bold py-6 text-lg rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
+                className="w-full bg-transparent hover:bg-foreground text-foreground hover:text-background border-2 border-foreground font-bold py-6 text-lg rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.1)]"
               >
                 {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
               </Button>
             </form>
           </Card>
 
-          <Card className="bg-[#0A0E27] border-[#00D9FF]/20 p-8 flex flex-col justify-center">
+          <Card className="bg-background border-primary/20 p-8 flex flex-col justify-center">
             <div className="text-center space-y-6">
               <div>
-                <p className="text-xl text-gray-300 mb-2">Или позвоните напрямую</p>
-                <p className="text-2xl font-bold text-[#00D9FF] mb-2">Алексей</p>
+                <p className="text-xl text-muted-foreground mb-2">Или позвоните напрямую</p>
+                <p className="text-2xl font-bold text-primary mb-2">Алексей</p>
                 <a
                   href="tel:89940931512"
-                  className="text-3xl md:text-4xl font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] hover:text-white/80 transition-colors"
+                  className="text-3xl md:text-4xl font-bold text-foreground drop-shadow-[0_0_10px_rgba(0,217,255,0.3)] hover:text-foreground/80 transition-colors"
                 >
                   8 994 093 15 12
                 </a>
               </div>
               
               <div className="pt-6">
-                <p className="text-gray-400 mb-4">Работаю по всему Улан-Удэ</p>
+                <p className="text-muted-foreground mb-4">Работаю по всему Улан-Удэ</p>
                 <div className="flex justify-center gap-4">
                   <Button
-                    className="bg-transparent hover:bg-[#00D9FF] text-[#00D9FF] hover:text-[#0A0E27] border-2 border-[#00D9FF] font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)]"
+                    className="bg-transparent hover:bg-primary text-primary hover:text-primary-foreground border-2 border-primary font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)]"
                     onClick={() => window.open('https://t.me/89940931512', '_blank')}
                   >
                     <Icon name="Send" className="mr-2" />
                     Telegram
                   </Button>
                   <Button
-                    className="bg-transparent hover:bg-[#00D927] text-[#00D927] hover:text-[#0A0E27] border-2 border-[#00D927] font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
+                    className="bg-transparent hover:bg-secondary text-secondary hover:text-secondary-foreground border-2 border-secondary font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
                     onClick={() => window.open('https://wa.me/89940931512', '_blank')}
                   >
                     <Icon name="MessageCircle" className="mr-2" />

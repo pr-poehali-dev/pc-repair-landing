@@ -19,34 +19,34 @@ const services = [
 
 const ServicesSection = ({ servicesRef, servicesInView, activeService, setActiveService }: ServicesSectionProps) => {
   return (
-    <section id="услуги" className="py-20 px-4 bg-[#0D1235] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-transparent to-transparent h-32 z-10"></div>
-      <div className="absolute inset-0 opacity-10">
+    <section id="услуги" className="py-20 px-4 bg-card relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent h-32 z-10"></div>
+      <div className="absolute inset-0 opacity-10 dark:opacity-10 light:opacity-5">
         <img
           src="https://cdn.poehali.dev/projects/9df248c2-67be-4a7d-9801-0798ce14a199/files/fbf2c55e-06a6-49ff-af6b-6cf921696682.jpg"
           alt=""
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0D1235] via-[#0D1235]/50 to-transparent h-32 z-10"></div>
+      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-card via-card/50 to-transparent h-32 z-10"></div>
       <div className="container mx-auto relative z-10" ref={servicesRef}>
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          Наши <span className="text-[#00D9FF] neon-glow">услуги</span>
+          Наши <span className="text-primary neon-glow">услуги</span>
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <Card
               key={index}
-              className={`bg-[#0A0E27] border-[#00D9FF]/20 p-6 hover:border-[#00D9FF] transition-all cursor-pointer group duration-500 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`bg-background border-primary/20 p-6 hover:border-primary transition-all cursor-pointer group duration-500 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
               onMouseEnter={() => setActiveService(index)}
               onMouseLeave={() => setActiveService(null)}
             >
-              <div className={`w-16 h-16 rounded-lg bg-[#00D9FF]/10 flex items-center justify-center mb-4 group-hover:bg-[#00D9FF]/20 transition-all ${activeService === index ? 'neon-border border-2 border-[#00D9FF]' : ''}`}>
-                <Icon name={service.icon} size={32} className="text-[#00D9FF]" />
+              <div className={`w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-all ${activeService === index ? 'neon-border border-2 border-primary' : ''}`}>
+                <Icon name={service.icon} size={32} className="text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-              <p className="text-gray-400">{service.description}</p>
+              <p className="text-muted-foreground">{service.description}</p>
             </Card>
           ))}
         </div>
