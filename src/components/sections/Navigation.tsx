@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import ThemeToggle from '@/components/ThemeToggle';
 
 interface NavigationProps {
   isMobileMenuOpen: boolean;
@@ -9,33 +10,35 @@ interface NavigationProps {
 
 const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen, scrollToSection }: NavigationProps) => {
   return (
-    <nav className="fixed top-0 w-full bg-[#0A0E27]/90 backdrop-blur-md z-50 border-b border-[#00D9FF]/20">
+    <nav className="fixed top-0 w-full bg-background/90 backdrop-blur-md z-50 border-b border-primary/20">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-xl md:text-2xl font-bold text-[#00D9FF] neon-glow">Компьютерный мастер</h1>
+        <h1 className="text-xl md:text-2xl font-bold text-primary neon-glow">Компьютерный мастер</h1>
         
         <div className="hidden md:flex gap-6">
           {['Главная', 'Услуги', 'Прайс', 'Преимущества', 'FAQ', 'Контакты'].map((item) => (
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
-              className="text-sm hover:text-[#00D9FF] transition-colors"
+              className="text-sm hover:text-primary transition-colors"
             >
               {item}
             </button>
           ))}
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          
           <Button
             onClick={() => scrollToSection('контакты')}
-            className="hidden sm:flex bg-transparent hover:bg-[#00D9FF] text-[#00D9FF] hover:text-[#0A0E27] font-semibold border-2 border-[#00D9FF] transition-all duration-300"
+            className="hidden sm:flex bg-transparent hover:bg-primary text-primary hover:text-primary-foreground font-semibold border-2 border-primary transition-all duration-300"
           >
             Позвонить
           </Button>
           
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-[#00D9FF] p-2"
+            className="md:hidden text-primary p-2"
             aria-label="Меню"
           >
             <Icon name={isMobileMenuOpen ? 'X' : 'Menu'} size={28} />
@@ -44,7 +47,7 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen, scrollToSection }: 
       </div>
       
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#0A0E27] border-t border-[#00D9FF]/20 animate-fade-in">
+        <div className="md:hidden bg-background border-t border-primary/20 animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {['Главная', 'Услуги', 'Прайс', 'Преимущества', 'Для бизнеса', 'FAQ', 'Контакты'].map((item) => (
               <button
@@ -53,7 +56,7 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen, scrollToSection }: 
                   scrollToSection(item.toLowerCase());
                   setIsMobileMenuOpen(false);
                 }}
-                className="text-left py-2 hover:text-[#00D9FF] transition-colors"
+                className="text-left py-2 hover:text-primary transition-colors"
               >
                 {item}
               </button>
@@ -63,7 +66,7 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen, scrollToSection }: 
                 scrollToSection('контакты');
                 setIsMobileMenuOpen(false);
               }}
-              className="bg-[#00D9FF] hover:bg-[#00D9FF]/80 text-[#0A0E27] font-semibold neon-border border-2 border-[#00D9FF]"
+              className="bg-primary hover:bg-primary/80 text-primary-foreground font-semibold neon-border border-2 border-primary"
             >
               Позвонить
             </Button>
