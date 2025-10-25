@@ -3,6 +3,9 @@ import { useToast } from '@/hooks/use-toast';
 import { useInView } from 'react-intersection-observer';
 import Navigation from '@/components/sections/Navigation';
 import HeroSection from '@/components/sections/HeroSection';
+import TrustSection from '@/components/sections/TrustSection';
+import MessengerWidget from '@/components/MessengerWidget';
+import PriceCalculator from '@/components/PriceCalculator';
 
 const ServicesSection = lazy(() => import('@/components/sections/ServicesSection'));
 const PricingSection = lazy(() => import('@/components/sections/PricingSection'));
@@ -66,6 +69,10 @@ const Index = () => {
       
       <HeroSection scrollToSection={scrollToSection} />
       
+      <TrustSection />
+      
+      <MessengerWidget />
+      
       <Suspense fallback={<div className="h-screen" />}>
         <ServicesSection 
           servicesRef={servicesRef}
@@ -81,6 +88,8 @@ const Index = () => {
           pricingInView={pricingInView}
         />
       </Suspense>
+      
+      <PriceCalculator />
       
       <Suspense fallback={<div className="h-96" />}>
         <AdvantagesSection 

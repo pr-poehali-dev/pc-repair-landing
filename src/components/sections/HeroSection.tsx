@@ -20,8 +20,22 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
             </div>
             <p className="text-xl text-muted-foreground">
               Ремонт компьютеров и ноутбуков в Улан-Удэ. <br />
-              Быстро, качественно, с гарантией.
+              <span className="font-semibold text-foreground">Приедем в течение 2 часов.</span> Средний ремонт — 1 день.
             </p>
+            <div className="flex gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <Icon name="Clock" size={20} className="text-primary" />
+                <span>Выезд за 2 часа</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="ShieldCheck" size={20} className="text-primary" />
+                <span>Гарантия 6 мес</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="Wrench" size={20} className="text-primary" />
+                <span>Опыт 10+ лет</span>
+              </div>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 onClick={() => scrollToSection('контакты')}

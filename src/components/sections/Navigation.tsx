@@ -14,8 +14,8 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen, scrollToSection }: 
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-xl md:text-2xl font-bold text-primary neon-glow">Компьютерный мастер</h1>
         
-        <div className="hidden md:flex gap-6">
-          {['Главная', 'Услуги', 'Прайс', 'Преимущества', 'FAQ', 'Контакты'].map((item) => (
+        <div className="hidden md:flex gap-6 items-center">
+          {['Главная', 'Услуги', 'Прайс', 'Преимущества', 'FAQ'].map((item) => (
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
@@ -24,17 +24,17 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen, scrollToSection }: 
               {item}
             </button>
           ))}
+          <Button
+            onClick={() => scrollToSection('контакты')}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-2 shadow-lg hover:shadow-primary/50 transition-all"
+          >
+            <Icon name="Phone" size={16} className="mr-2" />
+            Бесплатная консультация
+          </Button>
         </div>
         
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          
-          <Button
-            onClick={() => scrollToSection('контакты')}
-            className="hidden sm:flex bg-transparent hover:bg-primary text-primary hover:text-primary-foreground font-semibold border-2 border-primary transition-all duration-300"
-          >
-            Позвонить
-          </Button>
           
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

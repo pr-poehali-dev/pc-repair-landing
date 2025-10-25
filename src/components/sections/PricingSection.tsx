@@ -6,13 +6,13 @@ interface PricingSectionProps {
 }
 
 const pricing = [
-  { service: 'Диагностика', price: 'Бесплатно', highlight: true },
-  { service: 'Чистка от пыли', price: 'от 500₽' },
-  { service: 'Замена термопасты', price: 'от 800₽' },
-  { service: 'Ремонт ПК', price: 'от 1000₽' },
-  { service: 'Ремонт ноутбука', price: 'от 1500₽' },
-  { service: 'Сборка ПК', price: 'от 2000₽' },
-  { service: 'Апгрейд', price: 'от 1500₽' }
+  { service: 'Диагностика', price: 'Бесплатно', highlight: true, description: 'Приедем и определим причину поломки' },
+  { service: 'Чистка от пыли', price: '500₽', description: 'Полная очистка от пыли и грязи' },
+  { service: 'Замена термопасты', price: '800₽', description: 'Замена с качественной пастой Arctic' },
+  { service: 'Ремонт ПК', price: '1000₽', description: 'Диагностика + ремонт (без стоимости запчастей)' },
+  { service: 'Ремонт ноутбука', price: '1500₽', description: 'Диагностика + ремонт (без стоимости запчастей)' },
+  { service: 'Сборка ПК', price: '2000₽', description: 'Подбор комплектующих и сборка под ключ' },
+  { service: 'Апгрейд', price: '1500₽', description: 'Модернизация компьютера (консультация + установка)' }
 ];
 
 const PricingSection = ({ pricingRef, pricingInView }: PricingSectionProps) => {
@@ -34,8 +34,11 @@ const PricingSection = ({ pricingRef, pricingInView }: PricingSectionProps) => {
               }`}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
-              <span className="text-lg font-semibold">{item.service}</span>
-              <span className={`text-2xl font-bold ${item.highlight ? 'text-primary drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]' : 'text-primary'}`}>
+              <div className="flex-1">
+                <div className="text-lg font-semibold mb-1">{item.service}</div>
+                <div className="text-sm text-muted-foreground">{item.description}</div>
+              </div>
+              <span className={`text-2xl font-bold ml-4 ${item.highlight ? 'text-primary drop-shadow-[0_0_10px_rgba(0,217,255,0.5)]' : 'text-primary'}`}>
                 {item.price}
               </span>
             </Card>
