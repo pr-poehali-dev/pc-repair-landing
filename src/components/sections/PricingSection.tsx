@@ -7,12 +7,12 @@ interface PricingSectionProps {
 
 const pricing = [
   { service: 'Диагностика', price: 'Бесплатно', highlight: true, description: 'Приедем и определим причину поломки' },
-  { service: 'Чистка от пыли', price: '500₽', description: 'Полная очистка от пыли и грязи' },
-  { service: 'Замена термопасты', price: '800₽', description: 'Замена с качественной пастой Arctic' },
-  { service: 'Ремонт ПК', price: '1000₽', description: 'Диагностика + ремонт (без стоимости запчастей)' },
-  { service: 'Ремонт ноутбука', price: '1500₽', description: 'Диагностика + ремонт (без стоимости запчастей)' },
-  { service: 'Сборка ПК', price: '2000₽', description: 'Подбор комплектующих и сборка под ключ' },
-  { service: 'Апгрейд', price: '1500₽', description: 'Модернизация компьютера (консультация + установка)' }
+  { service: 'Чистка от пыли', price: 'от 300₽', description: 'Полная очистка от пыли и грязи' },
+  { service: 'Замена термопасты', price: 'от 500₽', description: 'Замена с качественной пастой Arctic' },
+  { service: 'Ремонт ПК', price: 'от 800₽', description: 'Диагностика + ремонт (без стоимости запчастей)' },
+  { service: 'Ремонт ноутбука', price: 'от 1000₽', description: 'Диагностика + ремонт (без стоимости запчастей)' },
+  { service: 'Сборка ПК', price: 'от 1500₽', description: 'Подбор комплектующих и сборка под ключ' },
+  { service: 'Апгрейд', price: 'от 1000₽', description: 'Модернизация компьютера (консультация + установка)' }
 ];
 
 const PricingSection = ({ pricingRef, pricingInView }: PricingSectionProps) => {

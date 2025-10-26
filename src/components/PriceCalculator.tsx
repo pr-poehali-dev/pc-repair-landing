@@ -17,12 +17,12 @@ const PriceCalculator = () => {
 
   const services: Service[] = [
     { id: 'diagnostic', name: 'Диагностика', price: 0, icon: 'Search' },
-    { id: 'cleaning', name: 'Чистка от пыли', price: 500, icon: 'Wind' },
-    { id: 'thermal', name: 'Замена термопасты', price: 800, icon: 'Thermometer' },
-    { id: 'repair-pc', name: 'Ремонт ПК', price: 1000, icon: 'Wrench' },
-    { id: 'repair-laptop', name: 'Ремонт ноутбука', price: 1500, icon: 'Laptop' },
-    { id: 'build', name: 'Сборка ПК', price: 2000, icon: 'Box' },
-    { id: 'upgrade', name: 'Апгрейд', price: 1500, icon: 'TrendingUp' }
+    { id: 'cleaning', name: 'Чистка от пыли', price: 300, icon: 'Wind' },
+    { id: 'thermal', name: 'Замена термопасты', price: 500, icon: 'Thermometer' },
+    { id: 'repair-pc', name: 'Ремонт ПК', price: 800, icon: 'Wrench' },
+    { id: 'repair-laptop', name: 'Ремонт ноутбука', price: 1000, icon: 'Laptop' },
+    { id: 'build', name: 'Сборка ПК', price: 1500, icon: 'Box' },
+    { id: 'upgrade', name: 'Апгрейд', price: 1000, icon: 'TrendingUp' }
   ];
 
   const toggleService = (serviceId: string) => {
