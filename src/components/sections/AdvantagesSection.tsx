@@ -28,11 +28,11 @@ const AdvantagesSection = ({ advantagesRef, advantagesInView }: AdvantagesSectio
         />
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-card via-card/50 to-transparent h-32 z-10"></div>
-      <div className="container mx-auto relative z-10" ref={advantagesRef}>
+      <div className="container mx-auto max-w-7xl relative z-10" ref={advantagesRef}>
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${advantagesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           Почему <span className="text-primary neon-glow">выбирают нас</span>
         </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {advantages.map((item, index) => (
             <Card
               key={index}

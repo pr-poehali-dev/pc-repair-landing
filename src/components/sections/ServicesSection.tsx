@@ -31,7 +31,7 @@ const ServicesSection = ({ servicesRef, servicesInView, activeService, setActive
         />
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-card via-card/50 to-transparent h-32 z-10"></div>
-      <div className="container mx-auto relative z-10" ref={servicesRef}>
+      <div className="container mx-auto max-w-7xl relative z-10" ref={servicesRef}>
         <h2 className={`text-4xl md:text-5xl font-bold text-center mb-12 transition-all duration-700 ${servicesInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           Наши <span className="text-primary neon-glow">услуги</span>
         </h2>
