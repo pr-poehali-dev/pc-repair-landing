@@ -94,9 +94,9 @@
 
 @layer utilities {
   .neon-glow {
-    text-shadow:
-      0 0 2px currentColor,
-      0 0 4px currentColor;
+    -webkit-text-stroke: 1px currentColor;
+    text-stroke: 1px currentColor;
+    filter: drop-shadow(0 0 3px currentColor);
   }
 
   .neon-border {
