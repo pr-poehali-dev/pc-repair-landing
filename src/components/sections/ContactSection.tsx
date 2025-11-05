@@ -99,7 +99,7 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
                   </Button>
                   <Button
                     className="bg-transparent hover:bg-secondary text-secondary hover:text-secondary-foreground border-2 border-secondary font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,39,0.5)]"
-                    onClick={() => window.open('https://wa.me/89940931512', '_blank')}
+                    onClick={() => window.open('https://wa.me/79940931512', '_blank')}
                   >
                     <Icon name="MessageCircle" className="mr-2" />
                     WhatsApp

@@ -8,7 +8,7 @@ const MessengerWidget = () => {
     {
       name: 'WhatsApp',
       icon: 'MessageCircle',
-      url: 'https://wa.me/79021234567',
+      url: 'https://wa.me/79940931512',
       color: 'bg-[#25D366] hover:bg-[#20BA5A]'
     },
     {
@@ -20,7 +20,7 @@ const MessengerWidget = () => {
     {
       name: 'Позвонить',
       icon: 'Phone',
-      url: 'tel:+79021234567',
+      url: 'tel:+79940931512',
       color: 'bg-primary hover:bg-primary/90'
     }
   ];
