@@ -36,7 +36,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
                 <span>Опыт 10+ лет</span>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-4">
               <Button
                 onClick={() => scrollToSection('контакты')}
                 className="bg-transparent hover:bg-primary text-primary hover:text-primary-foreground border-2 border-primary font-bold text-lg px-8 py-6 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)]"
