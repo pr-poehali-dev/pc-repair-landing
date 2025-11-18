@@ -22,7 +22,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               Ремонт компьютеров и ноутбуков в Улан-Удэ. <br />
               <span className="font-semibold text-foreground">Приедем в течение 2 часов.</span> Средний ремонт — 1 день.
             </p>
-            <div className="flex gap-6 text-sm">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 text-sm">
               <div className="flex items-center gap-2">
                 <Icon name="Clock" size={20} className="text-primary" />
                 <span>Выезд за 2 часа</span>
