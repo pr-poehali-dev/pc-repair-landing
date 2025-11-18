@@ -55,9 +55,7 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8">
-          <Card className={`bg-background border-primary/20 p-8 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <Card className={`bg-background border-primary/20 p-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h3 className="text-2xl font-bold text-primary mb-6">Оставить заявку</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -101,9 +99,7 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
             </form>
           </Card>
 
-          <Card className={`bg-background border-primary/20 p-8 flex flex-col justify-center transition-all duration-700 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
+          <Card className={`bg-background border-primary/20 p-8 flex flex-col justify-center transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="text-center space-y-6">
               <div>
                 <p className="text-xl text-muted-foreground mb-2">Или позвоните напрямую</p>
