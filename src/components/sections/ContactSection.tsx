@@ -114,7 +114,7 @@ const ContactSection = ({ formData, isSubmitting, handleInputChange, handleSubmi
               
               <div className="pt-6">
                 <p className="text-muted-foreground mb-4">Работаю по всему Улан-Удэ</p>
-                <div className="flex justify-center gap-4">
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Button
                     className="bg-transparent hover:bg-primary text-primary hover:text-primary-foreground border-2 border-primary font-bold px-6 py-5 rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,217,255,0.5)]"
                     onClick={() => window.open('https://t.me/89940931512', '_blank')}
